@@ -15,14 +15,24 @@
     <script>
         $(document).ready(function () {
             alert("It's working");
+            var class1 = $("<li></li>");
+            var class2 = $("<a></a>").text("班级2")
+            var dropdown = $("#dropdown_classlist");
+            dropdown.append(class1);
+            dropdown.eq(0).append(class2);
+            //$("#dropdown_classlist").append(class1);
+            
+
             $.post("GetSession.ashx", {"mission":1}, function (data, status) {
                 if (status = "success") {
                     var info = $.parseJSON(data);
                     if (info.exist == "1"){
                         $("li#showUserName").html(info.name);//其他班级信息等显示做类似处理，通过不同GetSession任务号，对应返回不同的信息来用
+
+                        
                     }
                     else {
-                        alert("hehe,你的session过期了吧，难道你没登陆？");
+                        alert("抱歉,您的session似乎过期了。莫非您根本就没登陆？");
                         location.href = 'Login.html';
                     }
                 }

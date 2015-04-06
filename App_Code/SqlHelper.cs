@@ -14,7 +14,8 @@ using System.Collections;
 /// </summary>
 public abstract class SqlHelper
 {
-    public static readonly string connectionString = System.Configuration.ConfigurationSettings.AppSettings["con"].ToString().Trim();
+    public static readonly string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["con"].ToString().Trim();
+    //System.Configuration.ConfigurationSettings.AppSettings["con"].ToString().Trim();
     // Hashtable to store cached parameters
     private static Hashtable parmCache = Hashtable.Synchronized(new Hashtable());
 
